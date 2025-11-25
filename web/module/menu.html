@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Gestión</title>
+    
+    <!-- Bootstrap-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+            text-decoration: none;
+        }
+
+        .menu-item-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .menu-item p {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        .campana { color: #f39c12; }
+        .donantes { color: #e74c3c; }
+        .organizacion { color: #3498db; }
+        .proyecto { color: #9b59b6; }
+        .reportes { color: #16a085; }
+        .usuarios { color: #34495e; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>📊 Dashboard de Gestión</h1>
+            <p>Selecciona una sección para comenzar</p>
+        </div>
+
+        <div class="container-fluid p-4">
+            <div class="row g-4" id="menuGrid">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="Campana.html" class="menu-item">
+                        <div class="menu-item-icon campana">📢</div>
+                        <h3>Campañas</h3>
+                        <p>Gestiona y visualiza campañas activas</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="donantes.html" class="menu-item">
+                        <div class="menu-item-icon donantes">❤️</div>
+                        <h3>Donantes</h3>
+                        <p>Administra información de donantes</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="organizacion.html" class="menu-item">
+                        <div class="menu-item-icon organizacion">🏢</div>
+                        <h3>Organización</h3>
+                        <p>Configuración organizacional</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="proyecto.html" class="menu-item">
+                        <div class="menu-item-icon proyecto">🎯</div>
+                        <h3>Proyectos</h3>
+                        <p>Gestión de proyectos</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="reportes.html" class="menu-item">
+                        <div class="menu-item-icon reportes">📈</div>
+                        <h3>Reportes</h3>
+                        <p>Análisis e informes detallados</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="usuarios.html" class="menu-item">
+                        <div class="menu-item-icon usuarios">👥</div>
+                        <h3>Usuarios</h3>
+                        <p>Administración de usuarios</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Efecto de animación al cargar
+            $('.menu-item').hide().each(function(index) {
+                $(this).delay(100 * index).fadeIn(500);
+            });
+
+            // Efecto al hacer clic
+            $('.menu-item').on('click', function(e) {
+                $(this).addClass('shadow-lg');
+            });
+
+            // Efecto hover adicional con jQuery
+            $('.menu-item').hover(
+                function() {
+                    $(this).find('.menu-item-icon').addClass('animate__animated animate__pulse');
+                },
+                function() {
+                    $(this).find('.menu-item-icon').removeClass('animate__animated animate__pulse');
+                }
+            );
+
+            // Log en consola al hacer clic en cada sección
+            $('.menu-item').on('click', function() {
+                var seccion = $(this).find('h3').text();
+                console.log('Navegando a: ' + seccion);
+            });
+        });
+    </script>
+</body>
+</html>
