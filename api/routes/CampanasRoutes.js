@@ -1,8 +1,7 @@
 const express = require('express');
 const route = express.Router();
 
-const Campaña = require('../models/Campana');
-
+const Campana = require('../models/Campana');
 
 // Crear una nueva campaña
 route.post('/', async (req, resp) => {
@@ -28,7 +27,6 @@ route.post('/', async (req, resp) => {
     }
 });
 
-
 // Update (PUT)
 route.put('/:id', async (req, resp) => {
     try {
@@ -48,11 +46,10 @@ route.put('/:id', async (req, resp) => {
     }
 });
 
-
 // Delete
 route.delete('/:id', async (req, resp) => {
     try {
-        const campanaEliminada = await Campaña.findByIdAndDelete(
+        const campanaEliminada = await Campana.findByIdAndDelete(
             req.params.id
         );
 
@@ -65,7 +62,6 @@ route.delete('/:id', async (req, resp) => {
         resp.status(400).json({ mesaje: error.message });
     }
 });
-
 
 // Obtener todas las campañas
 route.get('/', async (req, resp) => {
