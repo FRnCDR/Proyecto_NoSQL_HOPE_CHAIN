@@ -49,8 +49,8 @@ $("#donanteFormulario").on("submit", function (e) {
     const datos = {
         nombre: $("#nombre").val(),
         identificacion: $("#identificacionDonante").val(),
-        correo: $("#correo").val(),
         telefono: $("#telefono").val(),
+        correo: $("#correo").val(),       
         estado: $("#estado").val()
     };
 
@@ -88,7 +88,6 @@ $("#donanteFormulario").on("submit", function (e) {
             contentType: "application/json",
             success: function (response) {
                 console.log("Insertado:", response);
-
                 $("#donanteFormulario")[0].reset();
                 cargarDatos();
 

@@ -39,7 +39,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Tipo</th>
+                        <th>Objetivo</th>
                         <th>Fecha Inicio</th>
                         <th>Estado</th>
                         <th>Acciones</th>
@@ -51,82 +51,6 @@
 
             </table>
         </div>
-
-    <div class="modal fade" id="modalCampana" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Registrar Campaña</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form id="campanaFormulario">
-
-                        <div class="mb-3">
-                            <label class="form-label">Nombre de la campaña</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Fecha de inicio</label>
-                            <input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Fecha de fin</label>
-                            <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Tipo de campaña</label>
-                            <select class="form-select" name="tipo" id="tipo">
-                                <option value="Donación">Donación</option>
-                                <option value="Adopción">Adopción</option>
-                                <option value="Castración">Castración</option>
-                                <option value="Recaudación">Recaudación</option>
-                                <option value="Voluntariado">Voluntariado</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <select class="form-select" name="estado" id="estado">
-                                <option value="Activa">Activa</option>
-                                <option value="Inactiva">Inactiva</option>
-                                <option value="Finalizada">Finalizada</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Responsable</label>
-                            <input type="text" class="form-control" name="responsable" id="responsable" required>
-                        </div>
-
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                            <button type="reset" class="btn btn-danger">Limpiar</button>
-                        </div>
-
-                    </form>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cerrar
-                    </button>
-                </div>
-    </div>
-
-</div>
 
 
 <div class="modal fade" id="modalCampana" tabindex="-1" aria-hidden="true">
