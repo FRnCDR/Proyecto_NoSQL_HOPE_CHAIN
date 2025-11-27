@@ -12,7 +12,5 @@ const menus = `
 
 `;
 
-
-
 const htmlseccionMenu = $("#seccionMenu");
 htmlseccionMenu.append(menus);
