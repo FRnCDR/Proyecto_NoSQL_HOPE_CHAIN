@@ -58,12 +58,11 @@ $("#campanaFormulario").on("submit", function(e) {
     const idUpdate = $("#campanaFormulario").attr("data-id");
 
     const datos = {
-    nombre: $("#nombreDonante").val(),
-    identificacion: $("#identificacionDonante").val(),
-    telefono: $("#telefonoDonante").val(),
-    correo: $("#correoDonante").val(),
-    estado: $("#tipoDonante").val()
-};
+        nombre: $("#nombre").val(),
+        objetivo: $("#objetivo").val(),
+        fechaInicio: $("#fechaInicio").val(),
+        estado: $("#estado").val()
+    };
 
     console.log("Datos enviados:", datos);
 
