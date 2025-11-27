@@ -79,4 +79,14 @@ route.get('/', async (req, resp) => {
     }
 });
 
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const organizacionesDatos = await Organizacion.findById(id);
+        resp.json(organizacionesDatos);
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
 module.exports = route;
