@@ -12,10 +12,6 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Estilos propios (los mismos que usas en Donantes) -->
-    <link rel="stylesheet" href="css/estiloMenu.css">
-    <link rel="stylesheet" href="css/estilos.css">
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -29,17 +25,14 @@
 
     <div class="container mt-4 p-4 bg-white rounded shadow">
 
-        <!-- Título -->
         <h1 class="mb-4 text-success text-center text-md-start">
             <i class="fa fa-bullhorn"></i> Campañas
         </h1>
 
-        <!-- Botón para abrir modal -->
         <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalCampana">
             <i class="fa fa-plus"></i> Crear campaña
         </button>
 
-        <!-- Tabla -->
         <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-success">
@@ -56,7 +49,6 @@
                 </thead>
 
                 <tbody id="tablaCampanas">
-                    <!-- JS llenará las campañas -->
                 </tbody>
 
             </table>
@@ -81,7 +73,7 @@
             <tbody id="tablaCampanas"></tbody>
         </table>
     </div>
-    <!-- Modal -->
+
     <div class="modal fade" id="modalCampana" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -158,7 +150,7 @@
 
 </div>
 
-<!-- Modal -->
+
 <div class="modal fade" id="modalCampana" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
