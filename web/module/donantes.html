@@ -29,23 +29,21 @@
         </button>
 
         <div class="table-responsive">
-            <table id="tablaDonantes" class="table table-bordered table-striped align-middle">
+            <table class="table table-bordered table-striped align-middle">
                 <thead class="table-success">
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Identificación</th>
                         <th>Correo</th>
                         <th>Teléfono</th>
-                        <th>Tipo de Donante</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-<<<<<<< Updated upstream
                 <tbody>
                     <!-- JS cargará los datos -->
-=======
                 <tbody id="tablaDonantes">
->>>>>>> Stashed changes
                 </tbody>
             </table>
         </div>
@@ -62,32 +60,34 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="formDonante">
-
-                        <input type="hidden" id="idDonante">
+                    <form id="donanteFormulario">
 
                         <div class="mb-3">
                             <label class="form-label">Nombre completo</label>
-                            <input type="text" id="nombreDonante" class="form-control" required>
+                            <input type="text" id="nombre" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Identificación</label>
+                            <input type="text" id="identificacionDonante" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Correo</label>
-                            <input type="email" id="correoDonante" class="form-control" required>
+                            <input type="email" id="correo" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Teléfono</label>
-                            <input type="text" id="telefonoDonante" class="form-control" required>
+                            <input type="text" id="telefono" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Tipo de Donante</label>
-                            <select id="tipoDonante" class="form-select" required>
-                                <option value="">Seleccione</option>
-                                <option value="Persona Física">Persona Física</option>
-                                <option value="Empresa">Empresa</option>
-                                <option value="Organización">Organización</option>
+                            <label class="form-label">Estado</label>
+                            <select id="estado" class="form-select" required>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <option value="Pendiente">Pendiente</option>
                             </select>
                         </div>
 
@@ -117,7 +117,7 @@
     </script>
 
     <!-- JS para donantes -->
-    <script src="js/donantes.js"></script>
+    <script src="../js/donantejq.js"></script>
 
     <!-- Cargar menú -->
     <script>
