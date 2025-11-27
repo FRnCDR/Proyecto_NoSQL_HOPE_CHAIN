@@ -30,12 +30,12 @@
     </h1>
 
 
-    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalOrg">
+    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalOrganizacion">
         <i class="fa fa-plus"></i> Crear organización
     </button>
 
 
-    <div class="modal fade" id="modalOrg" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalOrganizacion" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -55,23 +55,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Tipo</label>
-                            <select class="form-select" name="tipo" id="tipo">
-                                <option value="Refugio">Refugio</option>
-                                <option value="Fundación">Fundación</option>
-                                <option value="Empresa Aliada">Empresa Aliada</option>
-                                <option value="ONG">ONG</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Dirección</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" required>
+                            <label class="form-label">Representante</label>
+                            <input type="text" class="form-control" name="representante" id="representante" required>
                         </div>
 
                         <div class="mb-3">
@@ -80,8 +65,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Responsable</label>
-                            <input type="text" class="form-control" name="responsable" id="responsable" required>
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono" id="telefono" required>
                         </div>
 
                         <div class="mb-3">
@@ -117,11 +102,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
+                    <th>Representante</th>
                     <th>Correo</th>
-                    <th>Responsable</th>
+                    <th>Teléfono</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
