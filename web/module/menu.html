@@ -166,17 +166,14 @@
 
     <script>
         $(document).ready(function() {
-            // Efecto de animación al cargar
             $('.menu-item').hide().each(function(index) {
                 $(this).delay(100 * index).fadeIn(500);
             });
 
-            // Efecto al hacer clic
             $('.menu-item').on('click', function(e) {
                 $(this).addClass('shadow-lg');
             });
 
-            // Efecto hover adicional con jQuery
             $('.menu-item').hover(
                 function() {
                     $(this).find('.menu-item-icon').addClass('animate__animated animate__pulse');
@@ -186,7 +183,6 @@
                 }
             );
 
-            // Log en consola al hacer clic en cada sección
             $('.menu-item').on('click', function() {
                 var seccion = $(this).find('h3').text();
                 console.log('Navegando a: ' + seccion);

@@ -12,29 +12,22 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Estilos propios -->
-    <link rel="stylesheet" href="css/estiloMenu.css">
-    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-    <!-- Menú dinámico -->
     <div id="seccionMenu"></div>
 
     <div class="container mt-4 p-4 bg-white rounded shadow">
 
-        <!-- Título -->
         <h1 class="mb-4 text-success">
             <i class="fa fa-hand-holding-heart"></i> Donantes
         </h1>
 
-        <!-- Botón crear -->
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalDonante">
             <i class="fa fa-plus"></i> Agregar Donante
         </button>
 
-        <!-- Tabla -->
         <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-success">
@@ -48,15 +41,15 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="tablaDonantes">
+                <tbody>
                     <!-- JS cargará los datos -->
+                <tbody id="tablaDonantes">
                 </tbody>
             </table>
         </div>
 
     </div>
 
-    <!-- MODAL -->
     <div class="modal fade" id="modalDonante" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -125,6 +118,13 @@
 
     <!-- JS para donantes -->
     <script src="../js/donantejq.js"></script>
+
+    <!-- Cargar menú -->
+    <script>
+        $(document).ready(function () {
+            $("#seccionMenu").load("menu.html");
+        });
+    </script>
 
 </body>
 
