@@ -75,8 +75,32 @@ route.get('/', async (req, resp) => {
         const proyectosDatos = await ProyectoSolidario.find();
         resp.json(proyectosDatos);
     } catch (error) {
-        resp.status(500).json({ mesaje: error.message });
+        resp.status(500).json({ mensaje: error.message });
     }
 });
 
+// Obtener un proyecto solidario por ID
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const proyectosDatos = await ProyectoSolidario.findById(id);
+        if (!proyectosDatos) {
+            return resp.status(404).json({ mensaje: 'Proyecto no encontrado' });
+        }
+        resp.json(proyectosDatos);
+    } catch (error) {
+        resp.status(500).json({ mensaje: error.message });
+    }
+});
+
+
+
+
+
+
+
 module.exports = route;
+
+
+
+
