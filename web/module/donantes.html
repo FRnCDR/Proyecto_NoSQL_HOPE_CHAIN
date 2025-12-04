@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donantes</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div id="seccionMenu"></div>
+
+    <div class="container mt-4 p-4 bg-white rounded shadow">
+
+        <h1 class="mb-4 text-success">
+            <i class="fa fa-hand-holding-heart"></i> Donantes
+        </h1>
+
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalDonante">
+            <i class="fa fa-plus"></i> Agregar Donante
+        </button>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-success">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Identificación</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaDonantes">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modalDonante" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Registrar Donante</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="donanteFormulario">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre completo</label>
+                            <input type="text" id="nombre" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Identificación</label>
+                            <input type="text" id="identificacionDonante" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" id="telefono" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo</label>
+                            <input type="email" id="correo" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <select id="estado" class="form-select" required>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <option value="Pendiente">Pendiente</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="reset" class="btn btn-danger">Limpiar</button>
+                    </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Cargar menú -->
+    <script>
+        $(document).ready(function () {
+            $("#seccionMenu").load("menu.html");
+        });
+    </script>
+
+    <!-- JS para donantes -->
+    <script src="../js/donantejq.js"></script>
+
+</body>
+
+</html>
