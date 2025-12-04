@@ -1,8 +1,5 @@
 const APIURL = "http://localhost:3000/api/Donante/";
 
-// ===============================
-// Cargar la lista en la tabla
-// ===============================
 function cargarDatos() {
 
     $.ajax({
@@ -44,31 +41,23 @@ function cargarDatos() {
 
 }
 
-
-
-// ===============================
-// Guardar / Actualizar Donante
-// ===============================
 $("#donanteFormulario").on("submit", function (e) {
     e.preventDefault();
 
-    // Si el form tiene data-id → es edición (PUT), si no → creación (POST)
     const idUpdate = $("#donanteFormulario").attr("data-id");
 
     const datos = {
         nombre: $("#nombre").val(),
         identificacion: $("#identificacionDonante").val(),
-        correo: $("#correo").val(),
         telefono: $("#telefono").val(),
+        correo: $("#correo").val(),       
         estado: $("#estado").val()
     };
 
     console.log("Datos enviados:", datos);
 
     if (idUpdate) {
-        // =======================
-        // UPDATE (PUT)
-        // =======================
+
         $.ajax({
             type: "PUT",
             url: APIURL + idUpdate,
@@ -91,9 +80,7 @@ $("#donanteFormulario").on("submit", function (e) {
         });
 
     } else {
-        // =======================
-        // CREAR (POST)
-        // =======================
+
         $.ajax({
             type: "POST",
             url: APIURL,
@@ -101,7 +88,6 @@ $("#donanteFormulario").on("submit", function (e) {
             contentType: "application/json",
             success: function (response) {
                 console.log("Insertado:", response);
-
                 $("#donanteFormulario")[0].reset();
                 cargarDatos();
 
@@ -118,46 +104,6 @@ $("#donanteFormulario").on("submit", function (e) {
 
 });
 
-
-
-// ===============================
-// EDITAR (GET + llenar modal)
-// ===============================
-// OJO: necesitas un GET /api/Donante/:id en DonantesRoutes.js
-$(document).on("click", ".btn-editar", function (e) {
-
-    e.preventDefault();
-    const id = $(this).data("id");
-
-    $.ajax({
-        type: "GET",
-        url: APIURL + id,
-        success: function (d) {
-
-            $("#nombre").val(d.nombre);
-            $("#identificacionDonante").val(d.identificacion);
-            $("#correo").val(d.correo);
-            $("#telefono").val(d.telefono);
-            $("#estado").val(d.estado);
-
-            $("#donanteFormulario").attr("data-id", id);
-
-            const modal = new bootstrap.Modal(document.getElementById("modalDonante"));
-            modal.show();
-        },
-        error: function (xhr) {
-            console.error("Error al cargar donante:", xhr.responseText);
-            alert("No se pudo cargar el donante para edición");
-        }
-    });
-
-});
-
-
-
-// ===============================
-// ELIMINAR (DELETE)
-// ===============================
 $(document).on("click", ".btn-eliminar", function (e) {
 
     e.preventDefault();
@@ -179,18 +125,8 @@ $(document).on("click", ".btn-eliminar", function (e) {
 
 });
 
-
-
-// ===============================
-// BOTÓN GUARDAR → dispara submit
-// ===============================
 $("#btnGuardarDonante").on("click", function () {
     $("#donanteFormulario").submit();
 });
 
-
-
-// ===============================
-// CARGA INICIAL
-// ===============================
 cargarDatos();

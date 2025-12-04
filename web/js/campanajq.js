@@ -1,9 +1,5 @@
 const APIURL = "http://localhost:3000/api/campana/";
 
-// ===============================
-// Cargar la lista en la tabla
-// ===============================
-
 async function cargarDatos() {
 
     $.ajax({
@@ -45,16 +41,9 @@ async function cargarDatos() {
 
 }
 
-
-
-// ===============================
-// Guardar nueva campaña (POST)
-// ===============================
-
 $("#campanaFormulario").on("submit", function(e) {
     e.preventDefault();
 
-    // Si tiene data-id → es UPDATE
     const idUpdate = $("#campanaFormulario").attr("data-id");
 
     const datos = {
@@ -67,9 +56,7 @@ $("#campanaFormulario").on("submit", function(e) {
     console.log("Datos enviados:", datos);
 
     if (idUpdate) {
-        // =======================
-        // UPDATE (PUT)
-        // =======================
+
         $.ajax({
             type: "PUT",
             url: APIURL + idUpdate,
@@ -91,9 +78,7 @@ $("#campanaFormulario").on("submit", function(e) {
         });
 
     } else {
-        // =======================
-        // CREAR (POST)
-        // =======================
+
         $.ajax({
             type: "POST",
             url: APIURL,
@@ -117,44 +102,6 @@ $("#campanaFormulario").on("submit", function(e) {
 
 });
 
-
-
-// ===============================
-// EDITAR (GET + llenar modal)
-// ===============================
-
-$(document).on("click", ".btn-editar", function() {
-
-    const id = $(this).data("id");
-
-    $.ajax({
-        type: "GET",
-        url: APIURL + id,
-        success: function(campana) {
-
-            $("#nombre").val(campana.nombre);
-            $("#objetivo").val(campana.objetivo);
-            $("#fechaInicio").val(campana.fechaInicio ? campana.fechaInicio.substring(0,10) : "");
-            $("#estado").val(campana.estado);
-
-            $("#campanaFormulario").attr("data-id", id);
-
-            const modal = new bootstrap.Modal(document.getElementById("modalCampana"));
-            modal.show();
-        },
-        error: function(xhr){
-            console.error("Error al cargar campaña:", xhr.responseText);
-        }
-    });
-
-});
-
-
-
-// ===============================
-// ELIMINAR (DELETE)
-// ===============================
-
 $(document).on("click", ".btn-eliminar", function() {
 
     const id = $(this).data("id");
@@ -175,11 +122,5 @@ $(document).on("click", ".btn-eliminar", function() {
     });
 
 });
-
-
-
-// ===============================
-// CARGA INICIAL
-// ===============================
 
 cargarDatos();
