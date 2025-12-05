@@ -67,10 +67,20 @@ route.delete('/:id', async (req, resp) => {
 });
 
 
-// Obtener todas las auditorías
+// Obtener todas las organizaciones
 route.get('/', async (req, resp) => {
     try {
         const auditoriasDatos = await Auditoria.find();
+        resp.json(auditoriasDatos);
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const auditoriasDatos = await Auditoria.findById(id);
         resp.json(auditoriasDatos);
     } catch (error) {
         resp.status(500).json({ mesaje: error.message });
