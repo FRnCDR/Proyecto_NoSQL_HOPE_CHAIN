@@ -1,8 +1,6 @@
 const APIURL = "http://localhost:3000/api/auditoria/";
 
-
-// Cargar Auditorías (GET)
-function cargarDatos() {
+async function cargarDatos() {
 
     $.ajax({
         type: "GET",
@@ -12,21 +10,21 @@ function cargarDatos() {
             const tbody = $("#tablaAuditoria");
             tbody.empty();
 
-            responseAuditoria.forEach(a => {
+            responseAuditoria.forEach(elementAuditoria => {
                 tbody.append(`
-                    <tr>
-                        <td>${a._id}</td>
-                        <td>${a.idUsuario}</td>
-                        <td>${a.accion}</td>
-                        <td>${a.fecha ? a.fecha.substring(0, 10) : ""}</td>
-                        <td>${a.descripcion ?? ""}</td>
+                    <tr class="">
+                        <td scope="row">${elementAuditoria._id}</td>
+                        <td>${elementAuditoria.idUsuario}</td>
+                        <td>${elementAuditoria.accion}</td>
+                        <td>${elementAuditoria.fecha ? elementAuditoria.fecha.substring(0, 10) : ""}</td>
+                        <td>${elementAuditoria.descripcion}</td>
 
                         <td>
-                            <a class="btn btn-primary btn-sm btn-editar" data-id="${a._id}" href="#">
+                            <a class="btn btn-primary btn-sm btn-editar" data-id="${elementAuditoria._id}" href="#">
                                 Editar
                             </a>
 
-                            <a class="btn btn-danger btn-sm btn-eliminar" data-id="${a._id}" href="#">
+                            <a class="btn btn-danger btn-sm btn-eliminar" data-id="${elementAuditoria._id}" href="#">
                                 Eliminar
                             </a>
                         </td>
@@ -35,7 +33,7 @@ function cargarDatos() {
             });
 
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error){
             console.error("Error al cargar auditorias:", error);
             console.error(xhr.responseText);
         }
@@ -43,9 +41,9 @@ function cargarDatos() {
 
 }
 
-
-
-// Guardar Auditoría (POST o PUT)
+// ===============================
+// Guardar nuevo proyecto (POST)
+// ===============================
 $("#auditoriaFormulario").on("submit", function (e) {
     e.preventDefault();
 
@@ -54,105 +52,89 @@ $("#auditoriaFormulario").on("submit", function (e) {
     const datos = {
         idUsuario: $("#idUsuario").val(),
         accion: $("#accion").val(),
-        fecha: new Date($("#fecha").val()),  
+        fecha: $("#fecha").val(),
         descripcion: $("#descripcion").val()
     };
 
-    console.log("Enviando datos:", datos);
-
     if (idUpdate) {
-
-// UPDATE (PUT)
+        // ======================= UPDATE (PUT) =======================
         $.ajax({
             type: "PUT",
             url: APIURL + idUpdate,
             data: JSON.stringify(datos),
             contentType: "application/json",
             success: function (response) {
-
-                console.log("Auditoría actualizada:", response);
-
+                console.log("Auditoria actrualizada:", response);
                 $("#auditoriaFormulario")[0].reset();
                 $("#auditoriaFormulario").removeAttr("data-id");
                 cargarDatos();
-
                 const modal = bootstrap.Modal.getInstance(document.getElementById("modalAuditoria"));
                 modal.hide();
             },
             error: function (xhr) {
-                console.error("Error al actualizar auditoría:", xhr.responseText);
-                alert("Error al actualizar la auditoría");
+                console.error("Error al actualizar auditoria:", xhr.responseText);
+                alert("Error al actualizar la auditoria");
             }
         });
-
     } else {
-
-// CREAR (POST)
+        // ======================= CREAR (POST) =======================
         $.ajax({
             type: "POST",
             url: APIURL,
             data: JSON.stringify(datos),
             contentType: "application/json",
             success: function (response) {
-
-                console.log("Auditoría insertada:", response);
-
+                console.log("Auditoria insertada:", response);
                 $("#auditoriaFormulario")[0].reset();
                 cargarDatos();
-
                 const modal = bootstrap.Modal.getInstance(document.getElementById("modalAuditoria"));
                 modal.hide();
             },
             error: function (xhr, status, error) {
-                console.error("Error al insertar auditoría:", error);
-                console.error(xhr.responseText);
-                alert("Fallo la inserción de auditoría");
+                console.error("Error al insertar auditoria:", error);
+                alert("Fallo la inserción de auditoria");
             }
         });
-
     }
-
 });
 
-
-
-// EDITAR Auditoría (GET por ID)
+// ===============================
+// EDITAR proyecto (GET + llenar modal)
+// ===============================
 $(document).on("click", ".btn-editar", function (e) {
     e.preventDefault();
-
-    const id = $(this).data("id");
+    const id = $(this).data("id");  // Obtén el ID del proyecto
 
     $.ajax({
         type: "GET",
-        url: APIURL + id,
-        success: function (a) {
+        url: APIURL + id,  // Usa el ID en la URL
+        success: function (proyecto) {
+            // Llena el formulario con los datos del proyecto
+            $("#idUsuario").val(proyecto.idUsuario);
+            $("#accion").val(proyecto.accion);
+            $("#fecha").val(proyecto.fecha ? proyecto.fecha.substring(0,10) : "");
+            $("#descripcion").val(proyecto.descripcion);
 
-            $("#idUsuario").val(a.idUsuario);
-            $("#accion").val(a.accion);
-            $("#fecha").val(a.fecha ? a.fecha.substring(0, 10) : "");
-            $("#descripcion").val(a.descripcion);
-
+            // Agrega el ID al formulario para futuras actualizaciones
             $("#auditoriaFormulario").attr("data-id", id);
-
             const modal = new bootstrap.Modal(document.getElementById("modalAuditoria"));
             modal.show();
         },
         error: function (xhr) {
-            console.error("Error al cargar auditoría:", xhr.responseText);
-            alert("No se pudo cargar la auditoría para edición");
+            console.error("Error al cargar la auditoria:", xhr.responseText);
+            alert("No se pudo cargar la auditoria");
         }
     });
 });
 
 
-
-// ELIMINAR Auditoría (DELETE)
-$(document).on("click", ".btn-eliminar", function (e) {
-    e.preventDefault();
+$(document).on("click", ".btn-eliminar", function() {
 
     const id = $(this).data("id");
 
-    if (!confirm("¿Seguro que desea eliminar esta auditoría?")) return;
+    if (!confirm("¿Seguro que desea eliminar esta auditoria?")) {
+        return;
+    }
 
     $.ajax({
         type: "DELETE",
@@ -160,13 +142,11 @@ $(document).on("click", ".btn-eliminar", function (e) {
         success: function () {
             cargarDatos();
         },
-        error: function (xhr) {
-            console.error("Error al eliminar auditoría:", xhr.responseText);
-            alert("No se pudo eliminar la auditoría");
+        error: function(xhr){
+            console.error("Error al eliminar:", xhr.responseText);
         }
     });
 
 });
 
-// CARGA INICIAL
 cargarDatos();

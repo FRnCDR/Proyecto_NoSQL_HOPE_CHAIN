@@ -18,109 +18,105 @@
 
 <body>
 
-    <header>
-        <div id="seccionMenu"></div>
-    </header>
+<header>
+    <div id="seccionMenu"></div>
+</header>
 
-    <div class="container mt-4 p-4 bg-white rounded shadow">
-
-
-        <h1 class="mb-4 text-success">
-            <i class="fa fa-building"></i> Auditoria
-        </h1>
+<div class="container mt-4 p-4 bg-white rounded shadow">
 
 
-        <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAuditoria">
-            <i class="fa fa-plus"></i> Crear Auditoria
-        </button>
+    <h1 class="mb-4 text-success">
+        <i class="fa fa-building"></i> Auditoria
+    </h1>
 
 
-        <div class="modal fade" id="modalAuditoria" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAuditoria">
+        <i class="fa fa-plus"></i> Crear Auditoria
+    </button>
 
 
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title">Registrar Auditoria</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
+    <div class="modal fade" id="modalAuditoria" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-                    <div class="modal-body">
 
-                        <form id="auditoriaFormulario">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Registrar Auditoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Id del usuario</label>
-                                <input type="text" class="form-control" name="idUsuario" id="idUsuario" required>
-                            </div>
+                <div class="modal-body">
 
-                            <div class="mb-3">
-                                <label class="form-label">Accion</label>
-                                <input type="text" class="form-control" name="accion" id="accion" required>
-                            </div>
+                    <form id="auditoriaFormulario">
 
-                            <div class="mb-3">
-                                <label class="form-label">Fecha</label>
-                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                        <div class="mb-3">
+                            <label class="form-label">Id del usuario</label>
+                            <input type="text" class="form-control" name="idUsuario" id="idUsuario" required>
+                        </div>
 
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Accion</label>
+                            <input type="text" class="form-control" name="accion" id="accion" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" name="descripcion" id="descripcion">
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" required>
+                        </div>
 
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">Guardar</button>
-                                <button type="reset" class="btn btn-danger">Limpiar</button>
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" required>
+                        </div>
 
-                        </form>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <button type="reset" class="btn btn-danger">Limpiar</button>
+                        </div>
 
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Cerrar
-                        </button>
-                    </div>
+                    </form>
 
                 </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+
             </div>
         </div>
-
-        <div class="table-responsive mt-3">
-            <table class="table table-bordered table-striped align-middle">
-                <thead class="table-success">
-                    <tr>
-                        <th>Id</th>
-                        <th>Id Usuario</th>
-                        <th>Accion</th>
-                        <th>Fecha</th>
-                        <th>Descripcion</th>
-                        <th>Acciones</th>
-
-
-                    </tr>
-                </thead>
-
-                <tbody id="tablaAuditoria">
-                </tbody>
-
-            </table>
-        </div>
-
     </div>
 
-    <footer></footer>
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-success">
+                <tr>
+                    <th>Id</th>
+                    <th>Id Usuario</th>
+                    <th>Accion</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
 
-    <!-- Scripts -->
-    <script src="../js/auditoriajq.js"></script>
-    <script src="../js/menu.js"></script>
+            <tbody id="tablaAuditoria">
+            </tbody>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </table>
+    </div>
 
-    <!-- Cargar menú -->
+</div>
+
+<footer></footer>
+
+<!-- Scripts -->
+<script src="../js/auditoriajq.js"></script>
+<script src="../js/menu.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Cargar menú -->
     <script>
         $(document).ready(function () {
             $("#seccionMenu").load("menu.html");

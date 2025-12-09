@@ -1,12 +1,12 @@
+// routes/usuarioRoutes.js
 const express = require('express');
 const route = express.Router();
 
 const Usuario = require('../models/Usuario');
 
-
-// Crear un nuevo usuario
+// Crear un nuevo usuario (POST /api/usuarios)
 route.post('/', async (req, resp) => {
-    const { 
+    const {
         nombreUsuario,
         correo,
         rol,
@@ -24,12 +24,11 @@ route.post('/', async (req, resp) => {
         const usuarioGuardado = await nuevoUsuario.save();
         resp.status(201).json(usuarioGuardado);
     } catch (error) {
-        resp.status(400).json({ mesaje: error.message });
+        resp.status(400).json({ mensaje: error.message });
     }
 });
 
-
-// Update (PUT)
+// Update (PUT /api/usuarios/:id)
 route.put('/:id', async (req, resp) => {
     try {
         const usuarioActualizado = await Usuario.findByIdAndUpdate(
@@ -39,17 +38,16 @@ route.put('/:id', async (req, resp) => {
         );
 
         if (!usuarioActualizado) {
-            return resp.status(404).json({ mesaje: "Usuario no encontrado" });
+            return resp.status(404).json({ mensaje: "Usuario no encontrado" });
         }
 
         resp.status(200).json(usuarioActualizado);
     } catch (error) {
-        resp.status(400).json({ mesaje: error.message });
+        resp.status(400).json({ mensaje: error.message });
     }
 });
 
-
-// Delete
+// Delete (DELETE /api/usuarios/:id)
 route.delete('/:id', async (req, resp) => {
     try {
         const usuarioEliminado = await Usuario.findByIdAndDelete(
@@ -57,23 +55,35 @@ route.delete('/:id', async (req, resp) => {
         );
 
         if (!usuarioEliminado) {
-            return resp.status(404).json({ mesaje: "Usuario no encontrado" });
+            return resp.status(404).json({ mensaje: "Usuario no encontrado" });
         }
 
-        resp.status(200).json({ mesaje: 'Usuario eliminado' });
+        resp.status(200).json({ mensaje: 'Usuario eliminado' });
     } catch (error) {
-        resp.status(400).json({ mesaje: error.message });
+        resp.status(400).json({ mensaje: error.message });
     }
 });
 
+// 🔹 Obtener un usuario por ID (GET /api/usuarios/:id)
+route.get('/:id', async (req, resp) => {
+    try {
+        const usuario = await Usuario.findById(req.params.id);
+        if (!usuario) {
+            return resp.status(404).json({ mensaje: "Usuario no encontrado" });
+        }
+        resp.json(usuario);
+    } catch (error) {
+        resp.status(500).json({ mensaje: error.message });
+    }
+});
 
-// Obtener todos los usuarios
+// Obtener todos los usuarios (GET /api/usuarios)
 route.get('/', async (req, resp) => {
     try {
         const usuariosDatos = await Usuario.find();
         resp.json(usuariosDatos);
     } catch (error) {
-        resp.status(500).json({ mesaje: error.message });
+        resp.status(500).json({ mensaje: error.message });
     }
 });
 

@@ -1,4 +1,4 @@
-const APIURL = "http://localhost:3000/api/Beneficiario/";
+const APIURL = "http://localhost:3000/api/beneficiario/";
 
 async function cargarDatos() {
 
@@ -50,11 +50,11 @@ $("#beneficiarioFormulario").on("submit", function (e) {
     const idUpdate = $("#beneficiarioFormulario").attr("data-id");
 
     const datos = {
-    nombre: $("#nombre").val(),
-    tipoBeneficiario: $("#tipoBeneficiario").val(),
-    contacto: $("#contacto").val(),
-    estado: $("#estado").val()
-};
+        nombre: $("#nombre").val(),
+        representante: $("#tipoBeneficiario").val(),
+        correo: $("#contacto").val(),
+        estado: $("#estado").val()
+    };
 
     if (idUpdate) {
         // ======================= UPDATE (PUT) =======================

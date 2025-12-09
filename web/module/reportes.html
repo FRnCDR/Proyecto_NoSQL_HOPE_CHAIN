@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -23,18 +24,21 @@
 
 <div class="container mt-4 p-4 bg-white rounded shadow">
 
+
     <h1 class="mb-4 text-success">
-        <i class="fa fa-chart-line"></i> Reportes de Impacto
+        <i class="fa fa-chart-line"></i> Reportes
     </h1>
+
 
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalReporte">
         <i class="fa fa-plus"></i> Crear reporte
     </button>
 
-    <!-- ==================== MODAL ==================== -->
+
     <div class="modal fade" id="modalReporte" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+
 
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Registrar Reporte</h5>
@@ -46,25 +50,44 @@
                     <form id="reporteFormulario">
 
                         <div class="mb-3">
-                            <label class="form-label">Proyecto</label>
-                            <input type="text" class="form-control" id="proyecto" required>
+                            <label class="form-label">Tipo de reporte</label>
+                            <select class="form-select" name="tipoReporte" id="tipoReporte" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Donantes">Reporte de Donantes</option>
+                                <option value="Campañas">Reporte de Campañas</option>
+                                <option value="Proyectos">Reporte de Proyectos</option>
+                                <option value="Adopciones">Reporte de Adopciones</option>
+                                <option value="Donaciones">Reporte de Donaciones</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Beneficiarios atendidos</label>
-                            <input type="number" class="form-control" id="beneficiariosAtendidos" required>
+                            <label class="form-label">Detalle</label>
+                            <input type="text" class="form-control" name="detalle" id="detalle" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Periodo</label>
-                            <input type="text" class="form-control" id="periodo" required>
+                            <label class="form-label">Categoría</label>
+                            <input type="text" class="form-control" name="categoria" id="categoria" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" name="fecha" id="fecha" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Monto / Datos</label>
+                            <input type="text" class="form-control" name="monto" id="monto" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Estado</label>
-                            <select class="form-select" id="estado" required>
-                                <option value="Publicado">Publicado</option>
+                            <select class="form-select" name="estado" id="estado">
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
                                 <option value="Pendiente">Pendiente</option>
+                                <option value="Completado">Completado</option>
                             </select>
                         </div>
 
@@ -83,61 +106,29 @@
                     </button>
                 </div>
 
-            <div class="col-md-4">
-                <label class="form-label">Tipo de reporte</label>
-                <select id="tipoReporte" class="form-select">
-                    <option selected disabled>Seleccione...</option>
-                    <option value="donantes">Reporte de Donantes</option>
-                    <option value="campañas">Reporte de Campañas</option>
-                    <option value="proyectos">Reporte de Proyectos</option>
-                    <option value="adopciones">Reporte de Adopciones</option>
-                    <option value="donaciones">Reporte de Donaciones</option>
-                </select>
             </div>
-
-            <div class="col-md-3">
-                <label class="form-label">Fecha inicio</label>
-                <input type="date" id="inicio" class="form-control">
-            </div>
-
-            <div class="col-md-3">
-                <label class="form-label">Fecha fin</label>
-                <input type="date" id="fin" class="form-control">
-            </div>
-
-            <div class="col-md-2 d-flex align-items-end">
-                <button id="btnFiltrar" class="btn btn-success w-100">
-                    <i class="fa fa-search"></i> Filtrar
-                </button>
-            </div>
-
         </div>
-
     </div>
 
-    <!-- ==================== TABLA ==================== -->
     <div class="table-responsive mt-3">
         <table class="table table-bordered table-striped align-middle">
             <thead class="table-success">
                 <tr>
                     <th>Id</th>
-                    <th>Proyecto</th>
-                    <th>Beneficiarios Atendidos</th>
-                    <th>Periodo</th>
-                    <th>Estado</th>
+                    <th>Tipo de Reporte</th>
+                    <th>Detalle</th>
+                    <th>Categoría</th>
+                    <th>Fecha</th>
                     <th>Monto / Datos</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
 
-            <tbody id="tablaReportes"></tbody>
+            <tbody id="tablaReportes">
+            </tbody>
 
         </table>
-    </div>
-
-    <div class="text-end mt-3">
-        <button class="btn btn-success" id="btnExportar">
-            <i class="fa fa-file-excel"></i> Exportar a Excel
-        </button>
     </div>
 
 </div>

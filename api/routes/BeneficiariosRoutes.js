@@ -67,10 +67,20 @@ route.delete('/:id', async (req, resp) => {
 });
 
 
-// Obtener todos los beneficiarios
+// Obtener todas las organizaciones
 route.get('/', async (req, resp) => {
     try {
         const beneficiariosDatos = await Beneficiario.find();
+        resp.json(beneficiariosDatos);
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const beneficiariosDatos = await Beneficiario.findById(id);
         resp.json(beneficiariosDatos);
     } catch (error) {
         resp.status(500).json({ mesaje: error.message });
