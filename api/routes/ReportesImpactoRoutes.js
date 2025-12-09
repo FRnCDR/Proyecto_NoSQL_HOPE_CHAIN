@@ -77,4 +77,20 @@ route.get('/', async (req, resp) => {
     }
 });
 
+// Obtener reporte de impacto por ID
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const reporte = await ReporteImpacto.findById(id);
+
+        if (!reporte) {
+            return resp.status(404).json({ mensaje: "Reporte no encontrado" });
+        }
+
+        resp.json(reporte);
+    } catch (error) {
+        resp.status(500).json({ mensaje: error.message });
+    }
+});
+
 module.exports = route;

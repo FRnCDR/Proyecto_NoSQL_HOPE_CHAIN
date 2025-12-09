@@ -1,5 +1,7 @@
 const APIURL = "http://localhost:3000/api/Donante/";
 
+
+// Cargar Donantes (GET)
 function cargarDatos() {
 
     $.ajax({
@@ -41,6 +43,41 @@ function cargarDatos() {
 
 }
 
+
+
+
+// EDITAR Donante (GET por ID)
+$(document).on("click", ".btn-editar", function (e) {
+    e.preventDefault();
+    const id = $(this).data("id");
+
+    $.ajax({
+        type: "GET",
+        url: APIURL + id,
+        success: function (d) {
+
+            $("#nombre").val(d.nombre);
+            $("#identificacionDonante").val(d.identificacion);
+            $("#telefono").val(d.telefono);
+            $("#correo").val(d.correo);
+            $("#estado").val(d.estado);
+
+            $("#donanteFormulario").attr("data-id", id);
+
+            const modal = new bootstrap.Modal(document.getElementById("modalDonante"));
+            modal.show();
+        },
+        error: function (xhr) {
+            console.error("Error al cargar donante:", xhr.responseText);
+            alert("No se pudo cargar el donante para edición");
+        }
+    });
+});
+
+
+
+
+// GUARDAR Donante (POST o PUT)
 $("#donanteFormulario").on("submit", function (e) {
     e.preventDefault();
 
@@ -50,7 +87,7 @@ $("#donanteFormulario").on("submit", function (e) {
         nombre: $("#nombre").val(),
         identificacion: $("#identificacionDonante").val(),
         telefono: $("#telefono").val(),
-        correo: $("#correo").val(),       
+        correo: $("#correo").val(),
         estado: $("#estado").val()
     };
 
@@ -58,12 +95,14 @@ $("#donanteFormulario").on("submit", function (e) {
 
     if (idUpdate) {
 
+        // UPDATE (PUT)
         $.ajax({
             type: "PUT",
             url: APIURL + idUpdate,
             data: JSON.stringify(datos),
             contentType: "application/json",
             success: function (response) {
+
                 console.log("Actualizado:", response);
 
                 $("#donanteFormulario")[0].reset();
@@ -81,13 +120,16 @@ $("#donanteFormulario").on("submit", function (e) {
 
     } else {
 
+        // INSERTAR (POST)
         $.ajax({
             type: "POST",
             url: APIURL,
             data: JSON.stringify(datos),
             contentType: "application/json",
             success: function (response) {
+
                 console.log("Insertado:", response);
+
                 $("#donanteFormulario")[0].reset();
                 cargarDatos();
 
@@ -104,6 +146,10 @@ $("#donanteFormulario").on("submit", function (e) {
 
 });
 
+
+
+
+// ELIMINAR Donante (DELETE)
 $(document).on("click", ".btn-eliminar", function (e) {
 
     e.preventDefault();
@@ -129,4 +175,7 @@ $("#btnGuardarDonante").on("click", function () {
     $("#donanteFormulario").submit();
 });
 
+
+
+// CARGA INICIAL
 cargarDatos();

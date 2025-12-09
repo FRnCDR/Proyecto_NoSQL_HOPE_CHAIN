@@ -77,4 +77,22 @@ route.get('/', async (req, resp) => {
     }
 });
 
+
+// Obtener un feedback por ID 
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const feedback = await Feedback.findById(id);
+
+        if (!feedback) {
+            return resp.status(404).json({ mesaje: 'Feedback no encontrado' });
+        }
+
+        resp.json(feedback);
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
+
 module.exports = route;

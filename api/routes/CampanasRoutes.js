@@ -73,4 +73,22 @@ route.get('/', async (req, resp) => {
     }
 });
 
+// Obtener campaña por ID 
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+
+    try {
+        const campana = await Campana.findById(id);
+
+        if (!campana) {
+            return resp.status(404).json({ mesaje: 'Campaña no encontrada' });
+        }
+
+        resp.json(campana);
+
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
 module.exports = route;

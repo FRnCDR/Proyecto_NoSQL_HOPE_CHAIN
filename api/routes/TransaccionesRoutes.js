@@ -52,9 +52,7 @@ route.put('/:id', async (req, resp) => {
 // Delete
 route.delete('/:id', async (req, resp) => {
     try {
-        const transaccionEliminada = await Transaccion.findByIdAndDelete(
-            req.params.id
-        );
+        const transaccionEliminada = await Transaccion.findByIdAndDelete(req.params.id);
 
         if (!transaccionEliminada) {
             return resp.status(404).json({ mesaje: "Transacción no encontrada" });
@@ -76,5 +74,24 @@ route.get('/', async (req, resp) => {
         resp.status(500).json({ mesaje: error.message });
     }
 });
+
+
+// Obtener una transacción por ID (para EDITAR)
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+    try {
+        const transaccion = await Transaccion.findById(id);
+
+        if (!transaccion) {
+            return resp.status(404).json({ mesaje: 'Transacción no encontrada' });
+        }
+
+        resp.json(transaccion);
+
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
 
 module.exports = route;
