@@ -24,21 +24,18 @@
 
 <div class="container mt-4 p-4 bg-white rounded shadow">
 
-
     <h1 class="mb-4 text-success">
-        <i class="fa fa-chart-line"></i> Reportes
+        <i class="fa fa-chart-line"></i> Reportes de Impacto
     </h1>
-
 
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalReporte">
         <i class="fa fa-plus"></i> Crear reporte
     </button>
 
-
+    <!-- ==================== MODAL ==================== -->
     <div class="modal fade" id="modalReporte" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-
 
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Registrar Reporte</h5>
@@ -50,44 +47,25 @@
                     <form id="reporteFormulario">
 
                         <div class="mb-3">
-                            <label class="form-label">Tipo de reporte</label>
-                            <select class="form-select" name="tipoReporte" id="tipoReporte" required>
-                                <option value="">Seleccione...</option>
-                                <option value="Donantes">Reporte de Donantes</option>
-                                <option value="Campañas">Reporte de Campañas</option>
-                                <option value="Proyectos">Reporte de Proyectos</option>
-                                <option value="Adopciones">Reporte de Adopciones</option>
-                                <option value="Donaciones">Reporte de Donaciones</option>
-                            </select>
+                            <label class="form-label">Proyecto</label>
+                            <input type="text" class="form-control" id="proyecto" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Detalle</label>
-                            <input type="text" class="form-control" name="detalle" id="detalle" required>
+                            <label class="form-label">Beneficiarios atendidos</label>
+                            <input type="number" class="form-control" id="beneficiariosAtendidos" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Categoría</label>
-                            <input type="text" class="form-control" name="categoria" id="categoria" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Fecha</label>
-                            <input type="date" class="form-control" name="fecha" id="fecha" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Monto / Datos</label>
-                            <input type="text" class="form-control" name="monto" id="monto" required>
+                            <label class="form-label">Periodo</label>
+                            <input type="text" class="form-control" id="periodo" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Estado</label>
-                            <select class="form-select" name="estado" id="estado">
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                            <select class="form-select" id="estado" required>
+                                <option value="Publicado">Publicado</option>
                                 <option value="Pendiente">Pendiente</option>
-                                <option value="Completado">Completado</option>
                             </select>
                         </div>
 
@@ -110,23 +88,21 @@
         </div>
     </div>
 
+    <!-- ==================== TABLA ==================== -->
     <div class="table-responsive mt-3">
         <table class="table table-bordered table-striped align-middle">
             <thead class="table-success">
                 <tr>
                     <th>Id</th>
-                    <th>Tipo de Reporte</th>
-                    <th>Detalle</th>
-                    <th>Categoría</th>
-                    <th>Fecha</th>
-                    <th>Monto / Datos</th>
+                    <th>Proyecto</th>
+                    <th>Beneficiarios Atendidos</th>
+                    <th>Periodo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
 
-            <tbody id="tablaReportes">
-            </tbody>
+            <tbody id="tablaReportes"></tbody>
 
         </table>
     </div>
