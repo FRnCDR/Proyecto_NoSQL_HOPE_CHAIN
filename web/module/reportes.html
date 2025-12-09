@@ -3,6 +3,7 @@
 
 <head>
     <title>Reportes de Impacto</title>
+    <title>Reportes de Impacto</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -29,8 +30,8 @@
 
     <h1 class="mb-4 text-success">
         <i class="fa fa-chart-line"></i> Reportes de Impacto
+        <i class="fa fa-chart-line"></i> Reportes de Impacto
     </h1>
-
 
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalReporte">
         <i class="fa fa-plus"></i> Crear reporte
@@ -53,9 +54,13 @@
                         <div class="mb-3">
                             <label class="form-label">Proyecto</label>
                             <input type="text" class="form-control" id="proyecto" required>
+                            <label class="form-label">Proyecto</label>
+                            <input type="text" class="form-control" id="proyecto" required>
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Beneficiarios atendidos</label>
+                            <input type="number" class="form-control" id="beneficiariosAtendidos" required>
                             <label class="form-label">Beneficiarios atendidos</label>
                             <input type="number" class="form-control" id="beneficiariosAtendidos" required>
                         </div>
@@ -63,10 +68,14 @@
                         <div class="mb-3">
                             <label class="form-label">Periodo</label>
                             <input type="text" class="form-control" id="periodo" required>
+                            <label class="form-label">Periodo</label>
+                            <input type="text" class="form-control" id="periodo" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="Publicado">Publicado</option>
                             <select class="form-select" id="estado" required>
                                 <option value="Publicado">Publicado</option>
                                 <option value="Pendiente">Pendiente</option>
@@ -162,7 +171,13 @@
         $("#seccionMenu").load("menu.html");
     });
 </script>
+<script>
+    $(document).ready(function () {
+        $("#seccionMenu").load("menu.html");
+    });
+</script>
 
 </body>
 
 </html>
+
