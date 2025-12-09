@@ -53,4 +53,23 @@ route.get('/', async (req, resp) => {
     }
 });
 
+
+// Obtener un donante por ID 
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+
+    try {
+        const donante = await Donante.findById(id);
+
+        if (!donante) {
+            return resp.status(404).json({ mensaje: "Donante no encontrado" });
+        }
+
+        resp.json(donante);
+
+    } catch (error) {
+        resp.status(500).json({ mensaje: error.message });
+    }
+});
+
 module.exports = route;

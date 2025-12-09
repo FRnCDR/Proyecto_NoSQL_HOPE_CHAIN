@@ -52,9 +52,7 @@ route.put('/:id', async (req, resp) => {
 // Delete
 route.delete('/:id', async (req, resp) => {
     try {
-        const ubicacionEliminada = await Ubicacion.findByIdAndDelete(
-            req.params.id
-        );
+        const ubicacionEliminada = await Ubicacion.findByIdAndDelete(req.params.id);
 
         if (!ubicacionEliminada) {
             return resp.status(404).json({ mesaje: "Ubicación no encontrada" });
@@ -71,10 +69,30 @@ route.delete('/:id', async (req, resp) => {
 route.get('/', async (req, resp) => {
     try {
         const ubicacionesDatos = await Ubicacion.find();
-    resp.json(ubicacionesDatos);
+        resp.json(ubicacionesDatos);
     } catch (error) {
         resp.status(500).json({ mesaje: error.message });
     }
 });
+
+
+// Obtener una ubicación por ID (para EDITAR)
+route.get('/:id', async (req, resp) => {
+    const id = req.params.id;
+
+    try {
+        const ubicacion = await Ubicacion.findById(id);
+
+        if (!ubicacion) {
+            return resp.status(404).json({ mesaje: "Ubicación no encontrada" });
+        }
+
+        resp.json(ubicacion);
+
+    } catch (error) {
+        resp.status(500).json({ mesaje: error.message });
+    }
+});
+
 
 module.exports = route;

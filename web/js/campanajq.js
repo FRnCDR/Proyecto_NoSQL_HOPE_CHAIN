@@ -102,6 +102,32 @@ $("#campanaFormulario").on("submit", function(e) {
 
 });
 
+$(document).on("click", ".btn-editar", function (e) {
+    e.preventDefault();
+    const id = $(this).data("id");
+
+    $.ajax({
+        type: "GET",
+        url: APIURL + id,
+        success: function (campana) {
+
+            $("#nombre").val(campana.nombre);
+            $("#objetivo").val(campana.objetivo);
+            $("#fechaInicio").val(campana.fechaInicio ? campana.fechaInicio.substring(0,10) : "");
+            $("#estado").val(campana.estado);
+
+            $("#campanaFormulario").attr("data-id", id);
+
+            const modal = new bootstrap.Modal(document.getElementById("modalCampana"));
+            modal.show();
+        },
+        error: function (xhr) {
+            console.error("Error al cargar campaña:", xhr.responseText);
+            alert("No se pudo cargar la campaña para edición");
+        }
+    });
+});
+
 $(document).on("click", ".btn-eliminar", function() {
 
     const id = $(this).data("id");

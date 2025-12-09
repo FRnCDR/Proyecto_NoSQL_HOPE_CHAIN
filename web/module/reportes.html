@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title>Reportes</title>
+    <title>Reportes de Impacto</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -23,6 +23,7 @@
 
 <div class="container mt-4 p-4 bg-white rounded shadow">
 
+<<<<<<< Updated upstream
     <h1 class="mb-3 text-success">
         <i class="fa fa-chart-line"></i> Reportes del Sistema
     </h1>
@@ -38,6 +39,67 @@
         </h5>
 
         <div class="row g-3">
+=======
+    <h1 class="mb-4 text-success">
+        <i class="fa fa-chart-line"></i> Reportes de Impacto
+    </h1>
+
+    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalReporte">
+        <i class="fa fa-plus"></i> Crear reporte
+    </button>
+
+    <!-- ==================== MODAL ==================== -->
+    <div class="modal fade" id="modalReporte" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Registrar Reporte</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="reporteFormulario">
+
+                        <div class="mb-3">
+                            <label class="form-label">Proyecto</label>
+                            <input type="text" class="form-control" id="proyecto" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Beneficiarios atendidos</label>
+                            <input type="number" class="form-control" id="beneficiariosAtendidos" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Periodo</label>
+                            <input type="text" class="form-control" id="periodo" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="Publicado">Publicado</option>
+                                <option value="Pendiente">Pendiente</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <button type="reset" class="btn btn-danger">Limpiar</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+>>>>>>> Stashed changes
 
             <div class="col-md-4">
                 <label class="form-label">Tipo de reporte</label>
@@ -71,6 +133,7 @@
 
     </div>
 
+<<<<<<< Updated upstream
     <!-- Tabla -->
     <div class="table-responsive mt-4">
         <table class="table table-bordered table-striped align-middle">
@@ -80,12 +143,29 @@
                     <th>Detalle</th>
                     <th>Categoría</th>
                     <th>Fecha</th>
+=======
+    <!-- ==================== TABLA ==================== -->
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-success">
+                <tr>
+                    <th>Id</th>
+                    <th>Proyecto</th>
+                    <th>Beneficiarios Atendidos</th>
+                    <th>Periodo</th>
+>>>>>>> Stashed changes
                     <th>Estado</th>
                     <th>Monto / Datos</th>
                 </tr>
             </thead>
+<<<<<<< Updated upstream
             <tbody id="tablaReportes">
             </tbody>
+=======
+
+            <tbody id="tablaReportes"></tbody>
+
+>>>>>>> Stashed changes
         </table>
     </div>
 
@@ -105,12 +185,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Cargar menú -->
-    <script>
-        $(document).ready(function () {
-            $("#seccionMenu").load("menu.html");
-        });
-    </script>
+<script>
+    $(document).ready(function () {
+        $("#seccionMenu").load("menu.html");
+    });
+</script>
 
 </body>
 

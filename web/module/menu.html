@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Sistema de Gestión</title>
-    
+
     <!-- Bootstrap-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <style>
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -84,12 +85,29 @@
             margin-bottom: 0;
         }
 
-        .campana { color: #f39c12; }
-        .donantes { color: #e74c3c; }
-        .organizacion { color: #3498db; }
-        .proyecto { color: #9b59b6; }
-        .reportes { color: #16a085; }
-        .usuarios { color: #34495e; }
+        .campana {
+            color: #f39c12;
+        }
+
+        .donantes {
+            color: #e74c3c;
+        }
+
+        .organizacion {
+            color: #3498db;
+        }
+
+        .proyecto {
+            color: #9b59b6;
+        }
+
+        .reportes {
+            color: #16a085;
+        }
+
+        .usuarios {
+            color: #34495e;
+        }
 
         @media (max-width: 768px) {
             .header h1 {
@@ -98,6 +116,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="dashboard-container">
         <div class="header">
@@ -154,40 +173,93 @@
                         <p>Administración de usuarios</p>
                     </a>
                 </div>
+<<<<<<< Updated upstream
+=======
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="auditoria.html" class="menu-item">
+                        <div class="menu-item-icon auditoria">🔍</div>
+                        <h3>Auditoria</h3>
+                        <p>Administración de auditorias</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="beneficiario.html" class="menu-item">
+                        <div class="menu-item-icon beneficiarios">🤝</div>
+                        <h3>Beneficiarios</h3>
+                        <p>Administración de Beneficiarios</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="donaciones.html" class="menu-item">
+                        <div class="menu-item-icon donaciones">💰</div>
+                        <h3>Donaciones</h3>
+                        <p>Administración de Donaciones</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="feedback.html" class="menu-item">
+                        <div class="menu-item-icon feedback">💬</div>
+                        <h3>Feedback</h3>
+                        <p>Administración de Feedbacks</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="transacciones.html" class="menu-item">
+                        <div class="menu-item-icon transacciones">💱</div>
+                        <h3>Transaciones</h3>
+                        <p>Administración de transacciones</p>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="ubicaciones.html" class="menu-item">
+                        <div class="menu-item-icon ubicaciones">📍</div>
+                        <h3>Ubicaciones</h3>
+                        <p>Administración de ubicaciones</p>
+                    </a>
+                </div>
+
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $('.menu-item').hide().each(function(index) {
+        $(document).ready(function () {
+            $('.menu-item').hide().each(function (index) {
                 $(this).delay(100 * index).fadeIn(500);
             });
 
-            $('.menu-item').on('click', function(e) {
+            $('.menu-item').on('click', function (e) {
                 $(this).addClass('shadow-lg');
             });
 
             $('.menu-item').hover(
-                function() {
+                function () {
                     $(this).find('.menu-item-icon').addClass('animate__animated animate__pulse');
                 },
-                function() {
+                function () {
                     $(this).find('.menu-item-icon').removeClass('animate__animated animate__pulse');
                 }
             );
 
-            $('.menu-item').on('click', function() {
+            $('.menu-item').on('click', function () {
                 var seccion = $(this).find('h3').text();
                 console.log('Navegando a: ' + seccion);
             });
         });
     </script>
 </body>
+
 </html>
