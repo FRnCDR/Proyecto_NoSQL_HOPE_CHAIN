@@ -51,8 +51,8 @@ $("#beneficiarioFormulario").on("submit", function (e) {
 
     const datos = {
         nombre: $("#nombre").val(),
-        representante: $("#tipoBeneficiario").val(),
-        correo: $("#contacto").val(),
+        tipoBeneficiario: $("#tipoBeneficiario").val(),
+        contacto: $("#contacto").val(),
         estado: $("#estado").val()
     };
 
